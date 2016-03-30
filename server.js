@@ -56,7 +56,7 @@ app.get('/phillippines', function(req, res){
 });
 
 // Bonus 2.
-app.get('/next/:current', function(req, res){
+app.get('/next', function(req, res){
   console.log(req.query)
 //First Work
   // var destinyArray = ["Seville", "Canary Islands", "Cape Verde", "Strait of Magellan", "Guam", "Philippines"]
@@ -79,6 +79,7 @@ app.get('/next/:current', function(req, res){
   // nextObject.nextLocation = nextLocation
 
 //Second Work
+
   var locationObject = {
     Seville: "Canary Islands",
     CanaryIslands: "Cape Verde",
@@ -87,7 +88,7 @@ app.get('/next/:current', function(req, res){
     Guam:"Philippines",
     Philippines:"N/A"
   }
-  res.send(locationObject[req.params.current])
+  res.send(locationObject[req.query.location])
 })
 
 // Bonus 1. Routing for any destination that's not included in voyage.
