@@ -31,29 +31,40 @@ app.get('/', function(req, res){
 });
 
 // Canary Islands
-app.get('/tweety', function(req, res){
+app.get('/CanaryIslands', function(req, res){
   res.sendFile('CanaryIslands.html', {root: __dirname + '/public/html/'})
 });
 
 // Cape Verde
-app.get('/verde', function(req, res){
+app.get('/CapeVerde', function(req, res){
   res.sendFile('CapeVerde.html', {root: __dirname + '/public/html/'})
 });
 
 // Strait of Magellan
-app.get('/nohomo', function(req, res){
+app.get('/StraitofMagellan', function(req, res){
   res.sendFile('StraitofMagellan.html', {root: __dirname + '/public/html/'})
 });
 
 // Guam
-app.get('/guacamole', function(req, res){
+app.get('/guam', function(req, res){
   res.sendFile('guam.html', {root: __dirname + '/public/html/'})
 });
 
 // Philippines
-app.get('/pippa', function(req, res){
+app.get('/phillippines', function(req, res){
   res.sendFile('phillippines.html', {root: __dirname + '/public/html/'})
 });
+
+app.get('/next', function(req, res){
+  console.log(req.query)
+
+  res.send({nextcountry:"testcountry"})
+})
+
+app.get('/:destiny',function(req,res){
+  console.log('Params:' , req.params)
+  res.send("<marquee> Magellan didn\'t go to, " + req.params.destiny + "!</marquee>")
+})
 
 // =+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+=
 // Creating Server and Listening for Connections
