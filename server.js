@@ -55,16 +55,48 @@ app.get('/phillippines', function(req, res){
   res.sendFile('phillippines.html', {root: __dirname + '/public/html/'})
 });
 
-app.get('/next', function(req, res){
+// Bonus 2.
+app.get('/next/:current', function(req, res){
   console.log(req.query)
+//First Work
+  // var destinyArray = ["Seville", "Canary Islands", "Cape Verde", "Strait of Magellan", "Guam", "Philippines"]
+  // var location = req.params.current //Input from query string I'm assuming
+  // var nextlocation = ""
+  // var nextLocationIndex = 0
+  // if (location == "Philippines") {
+  //   nextlocation = "none"
+  // }
+  // else {
+  //   for (var i = 0; i < destinyArray.length; i++) {
+  //     if (location == destinyArray[i]) {
+  //       nextLocationIndex = i + 1
+  //       nextLocation = destinyArray[nextLocationIndex]
+  //     }
+  //   }
+  // }
+  // var nextObject = {}
+  // nextObject.location = location
+  // nextObject.nextLocation = nextLocation
 
-  res.send({nextcountry:"testcountry"})
+//Second Work
+  var locationObject = {
+    Seville: "Canary Islands",
+    CanaryIslands: "Cape Verde",
+    CapeVerde:"Strait of Magellan",
+    StraitofMagellan:"Guam",
+    Guam:"Philippines",
+    Philippines:"N/A"
+  }
+  res.send(locationObject[req.params.current])
 })
 
+// Bonus 1. Routing for any destination that's not included in voyage.
 app.get('/:destiny',function(req,res){
   console.log('Params:' , req.params)
   res.send("<marquee> Magellan didn\'t go to, " + req.params.destiny + "!</marquee>")
 })
+
+
 
 // =+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+==+=
 // Creating Server and Listening for Connections
