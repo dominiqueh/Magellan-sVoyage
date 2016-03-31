@@ -58,27 +58,6 @@ app.get('/phillippines', function(req, res){
 // Bonus 2.
 app.get('/next', function(req, res){
   console.log(req.query)
-//First Work
-  // var destinyArray = ["Seville", "Canary Islands", "Cape Verde", "Strait of Magellan", "Guam", "Philippines"]
-  // var location = req.params.current //Input from query string I'm assuming
-  // var nextlocation = ""
-  // var nextLocationIndex = 0
-  // if (location == "Philippines") {
-  //   nextlocation = "none"
-  // }
-  // else {
-  //   for (var i = 0; i < destinyArray.length; i++) {
-  //     if (location == destinyArray[i]) {
-  //       nextLocationIndex = i + 1
-  //       nextLocation = destinyArray[nextLocationIndex]
-  //     }
-  //   }
-  // }
-  // var nextObject = {}
-  // nextObject.location = location
-  // nextObject.nextLocation = nextLocation
-
-//Second Work
 
   var locationObject = {
     Seville: "Canary Islands",
@@ -88,7 +67,10 @@ app.get('/next', function(req, res){
     Guam:"Philippines",
     Philippines:"N/A"
   }
-  res.send(locationObject[req.query.location])
+  var outputObject = {}
+  outputObject.location = req.query.location
+  outputObject.nextLocation = locationObject[req.query.location]
+  res.json(outputObject)
 })
 
 // Bonus 1. Routing for any destination that's not included in voyage.
